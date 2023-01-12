@@ -1,1 +1,70 @@
-<p>gallary works!</p>
+<h3 class="header">Products</h3>
+<div class="row">
+  <div class="col-md-2">
+    <div class="form">
+      <div class="form-group">
+        <div class="form-label">Category</div>
+        <select
+          (change)="filterProducts()"
+          [(ngModel)]="categoryId"
+          class="form-select"
+        >
+          <option value="0">All</option>
+          <option *ngFor="let category of categories" [value]="category['id']">
+            {{ category["title"] }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <div class="form-label">Brand</div>
+        <select
+          (change)="filterProducts()"
+          [(ngModel)]="brandId"
+          class="form-select"
+        >
+          <option value="0">All</option>
+          <option [value]="brand['id']" *ngFor="let brand of brands">
+            {{ brand["title"] }}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-10">
+    <h4 *ngIf="products.length == 0">
+      There are no products matching this criteria !
+    </h4>
+    <div *ngIf="products.length != 0" class="row row-cols-1 row-cols-md-4 g-4">
+      <div class="col" *ngFor="let product of products">
+        <div class="card h-100 product-card">
+          <img
+            src="http://localhost:7100/product/image/{{ product['imageFile'] }}"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ product["title"] }}</h5>
+            <p class="card-text">{{ product["description"] }}</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <strong>Brand: </strong>{{ product["brandTitle"] }}
+            </li>
+            <li class="list-group-item">
+              <strong>Category: </strong>{{ product["categoryTitle"] }}
+            </li>
+            <li class="list-group-item">
+              <strong>Price: </strong>{{ product["price"] }}
+              <button
+                (click)="addToCart(product)"
+                class="btn btn-sm btn-info add-to-cart float-end"
+              >
+                Add To Cart
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

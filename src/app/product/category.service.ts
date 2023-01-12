@@ -4,22 +4,18 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class ProductService {
+export class CategoryService {
   httpOptions = {
     headers: new HttpHeaders({
       token: sessionStorage['token'],
     }),
   };
 
-  url = 'http://localhost:7100/product';
+  url = 'http://localhost:7100/category';
 
   constructor(private http: HttpClient) {}
 
-  filterProducts(categoryId: number, brandId: number) {
-    const body = {
-      categoryId: categoryId,
-      brandId: brandId,
-    };
-    return this.http.post(this.url + '/filter', body, this.httpOptions);
+  getAllCategories() {
+    return this.http.get(this.url, this.httpOptions);
   }
 }

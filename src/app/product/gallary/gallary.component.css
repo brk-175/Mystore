@@ -1,0 +1,13 @@
+button:hover {
+  background: black;
+  color: aquamarine;
+  border: 1px solid crimson;
+}
+img {
+  height: 200px;
+  object-fit: contain;
+}
+.product-card {
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px 1px #ccc;
+}
