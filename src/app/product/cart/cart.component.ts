@@ -2,6 +2,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
+import { ChooseAddressComponent } from 'src/app/order/choose-address/choose-address.component';
 import { CartService } from '../cart.service';
 
 @Component({
@@ -62,5 +63,14 @@ export class CartComponent {
           } else this.toastr.error(response.error);
         });
     }
+  }
+
+  placeOrder() {
+    const modalRef = this.modalService.open(ChooseAddressComponent, {
+      size: 'xl',
+    });
+    modalRef.result.finally(() => {
+      this.getCartItems();
+    });
   }
 }

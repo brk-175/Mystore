@@ -4,16 +4,10 @@ import { CommonModule } from '@angular/common';
 import { OrderRoutingModule } from './order-routing.module';
 import { OrderHistoryComponent } from './order-history/order-history.component';
 import { OrderPreviewComponent } from './order-preview/order-preview.component';
-
+import { ChooseAddressComponent } from './choose-address/choose-address.component';
 
 @NgModule({
-  declarations: [
-    OrderHistoryComponent,
-    OrderPreviewComponent
-  ],
-  imports: [
-    CommonModule,
-    OrderRoutingModule
-  ]
+  declarations: [OrderHistoryComponent, OrderPreviewComponent, ChooseAddressComponent],
+  imports: [CommonModule, OrderRoutingModule],
 })
-export class OrderModule { }
+export class OrderModule {}
