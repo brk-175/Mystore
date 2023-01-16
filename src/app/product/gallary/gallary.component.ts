@@ -1,5 +1,6 @@
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BrandService } from '../brand.service';
 import { CartService } from '../cart.service';
@@ -23,7 +24,8 @@ export class GallaryComponent {
     private productService: ProductService,
     private categoryService: CategoryService,
     private brandservice: BrandService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -63,5 +65,11 @@ export class GallaryComponent {
           this.toastr.success('Product Added To Cart');
         else this.toastr.error(response.error);
       });
+  }
+
+  showProductInfo(product: any) {
+    this.router.navigate(['/home/product/product-info'], {
+      queryParams: { id: product.id },
+    });
   }
 }

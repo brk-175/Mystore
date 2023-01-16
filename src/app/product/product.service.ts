@@ -15,6 +15,10 @@ export class ProductService {
 
   constructor(private http: HttpClient) {}
 
+  getProductInfo(id: number) {
+    return this.http.get(this.url + '/' + id, this.httpOptions);
+  }
+
   filterProducts(categoryId: number, brandId: number) {
     const body = {
       categoryId: categoryId,
