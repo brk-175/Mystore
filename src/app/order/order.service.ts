@@ -15,6 +15,14 @@ export class OrderService {
 
   constructor(private http: HttpClient) {}
 
+  getOrders() {
+    return this.http.get(this.url, this.httpOptions);
+  }
+
+  cancelOrder(id: number) {
+    return this.http.delete(this.url + '/cancel/' + id, this.httpOptions);
+  }
+
   placeOrder(addressId: number) {
     const body = {
       addressId,
