@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home',
@@ -7,11 +8,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private toastr: ToastrService) {}
+
+  ngOnInit() {}
+
+  onLogin() {
+    this.router.navigate(['/auth/login']);
+  }
 
   onLogout() {
     sessionStorage.removeItem('name');
     sessionStorage.removeItem('token');
-    this.router.navigate(['/auth/login']);
+    this.toastr.success('Logged Out Successfully!');
+    this.router.navigate(['/home/home_page']);
   }
 }

@@ -36,7 +36,12 @@
           >
         </td>
         <td>
-          <button class="btn btn-sm btn-info">Details</button>
+          <button
+            class="btn btn-sm btn-info"
+            (click)="getOrderPreviewDetails(order['id'])"
+          >
+            Details
+          </button>
           <button
             (click)="onCancel(order['id'])"
             *ngIf="order['orderStatus'] == 1"

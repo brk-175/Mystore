@@ -6,6 +6,7 @@
         <div class="form-label">Category</div>
         <select
           (change)="filterProducts()"
+          (change)="getSpecificBrands()"
           [(ngModel)]="categoryId"
           class="form-select"
         >
@@ -35,38 +36,20 @@
       There are no products matching this criteria !
     </h4>
     <div *ngIf="products.length != 0" class="row row-cols-1 row-cols-md-4 g-4">
-      <div
-        class="col"
-        (click)="showProductInfo(product)"
-        *ngFor="let product of products"
-      >
-        <div class="card h-100 product-card">
+      <div class="col" *ngFor="let product of products">
+        <div class="product-card">
           <img
             src="http://localhost:7100/product/image/{{ product['imageFile'] }}"
-            class="card-img-top"
-            alt="..."
+            alt="Product Name"
+            (click)="showProductInfo(product)"
+            class="product-image"
           />
-          <div class="card-body">
-            <h5 class="card-title">{{ product["title"] }}</h5>
-            <p class="card-text">{{ product["description"] }}</p>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <strong>Brand: </strong>{{ product["brandTitle"] }}
-            </li>
-            <li class="list-group-item">
-              <strong>Category: </strong>{{ product["categoryTitle"] }}
-            </li>
-            <li class="list-group-item">
-              <strong>Price: </strong>{{ product["price"] }}
-              <button
-                (click)="addToCart(product)"
-                class="btn btn-sm btn-info add-to-cart float-end"
-              >
-                Add To Cart
-              </button>
-            </li>
-          </ul>
+          <h3 class="product-name">{{ product["title"] }}</h3>
+          <p class="product-description">{{ product["description"] }}</p>
+          <div class="product-price">₹ {{ product["price"] }}</div>
+          <button (click)="addToCart(product)" class="add-to-cart-button">
+            Add to Cart
+          </button>
         </div>
       </div>
     </div>

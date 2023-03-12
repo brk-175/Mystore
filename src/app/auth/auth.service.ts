@@ -51,7 +51,7 @@ export class AuthService implements CanActivate {
     state: RouterStateSnapshot
   ): boolean {
     if (!sessionStorage['token']) {
-      this.router.navigate(['/auth/login']);
+      this.router.navigate(['/home/home_page']);
       this.toastr.warning('Please login first');
       return false;
     }

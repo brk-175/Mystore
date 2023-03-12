@@ -30,8 +30,8 @@ export class GallaryComponent {
 
   ngOnInit() {
     this.getAllCategories();
-    this.getAllBrands();
     this.filterProducts();
+    this.getSpecificBrands();
   }
 
   getAllCategories() {
@@ -41,11 +41,13 @@ export class GallaryComponent {
     });
   }
 
-  getAllBrands() {
-    this.brandservice.getAllBrands().subscribe((response: any) => {
-      if (response.status == 'success') this.brands = response.data;
-      else this.toastr.error(response.error);
-    });
+  getSpecificBrands() {
+    this.brandservice
+      .getSpecificBrands(this.categoryId)
+      .subscribe((response: any) => {
+        if (response.status == 'success') this.brands = response.data;
+        else this.toastr.error(response.error);
+      });
   }
 
   filterProducts() {
@@ -53,7 +55,10 @@ export class GallaryComponent {
       .filterProducts(this.categoryId, this.brandId)
       .subscribe((response: any) => {
         if (response.status == 'success') this.products = response.data;
-        else this.toastr.error(response.error);
+        else {
+          console.log(response.error);
+          this.toastr.error(response.error);
+        }
       });
   }
 
@@ -61,9 +66,10 @@ export class GallaryComponent {
     this.cartService
       .addToCart(product.id, product.price, 1)
       .subscribe((response: any) => {
-        if (response.status == 'success')
+        if (response.status == 'success') {
           this.toastr.success('Product Added To Cart');
-        else this.toastr.error(response.error);
+          this.router.navigate(['/home/product/cart']);
+        } else this.toastr.error(response.error);
       });
   }
 

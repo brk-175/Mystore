@@ -15,7 +15,7 @@ export class BrandService {
 
   constructor(private http: HttpClient) {}
 
-  getAllBrands() {
-    return this.http.get(this.url, this.httpOptions);
+  getSpecificBrands(categoryId: number) {
+    return this.http.get(this.url +'/'+ categoryId, this.httpOptions);
   }
 }

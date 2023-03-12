@@ -29,4 +29,8 @@ export class OrderService {
     };
     return this.http.post(this.url, body, this.httpOptions);
   }
+
+  getOrderPreviewDetails(orderId: number) {
+    return this.http.get(this.url + '/preview/' + orderId, this.httpOptions);
+  }
 }

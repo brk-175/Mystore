@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../auth.service';
+import * as EmailValidator from 'email-validator';
 
 @Component({
   selector: 'app-signup',
@@ -29,10 +30,16 @@ export class SignupComponent {
       this.toastr.warning('Please enter Last Name !');
     } else if (this.phone.length == 0) {
       this.toastr.warning('Please enter Mobile Number !');
+    } else if (this.phone.toString().length != 10) {
+      this.toastr.error('Please enter a valid Mobile Number !');
     } else if (this.email.length == 0) {
       this.toastr.warning('Please enter Email !');
     } else if (this.password.length == 0) {
       this.toastr.warning('Please enter Password !');
+    } else if (EmailValidator.validate(this.email) == false) {
+      this.toastr.error('Invalid Email !');
+    } else if (this.password.length < 8) {
+      this.toastr.error('Password must have at least 8 characters !');
     } else if (this.confirmPassword.length == 0) {
       this.toastr.warning('Please confirm a Password !');
     } else if (this.password != this.confirmPassword) {

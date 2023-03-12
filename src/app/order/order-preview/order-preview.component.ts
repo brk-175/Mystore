@@ -5,4 +5,10 @@ import { Component } from '@angular/core';
   templateUrl: './order-preview.component.html',
   styleUrls: ['./order-preview.component.css'],
 })
-export class OrderPreviewComponent {}
+export class OrderPreviewComponent {
+  order_details = [];
+
+  constructor() {}
+
+  ngOnInit() {}
+}

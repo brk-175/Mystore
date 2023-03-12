@@ -32,7 +32,7 @@ export class LoginComponent {
             const user = response.data;
             sessionStorage['name'] = user.firstName + ' ' + user.lastName;
             sessionStorage['token'] = user.token;
-            this.router.navigate(['/home']);
+            this.router.navigate(['/home/product/gallary']);
           } else this.toastr.error(response.error);
         });
     }
