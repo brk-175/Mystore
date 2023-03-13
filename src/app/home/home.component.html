@@ -37,13 +37,7 @@
         </li>
       </ul>
       <div class="d-flex" role="search">
-        <button
-          (click)="onLogin()"
-          class="btn"
-          id="login"
-        >
-          Login
-        </button>
+        <button (click)="onLogin()" class="btn" id="login">Login</button>
         <div ngbDropdown class="d-inline-block">
           <button
             type="button"
@@ -51,7 +45,7 @@
             id="dropdownBasic1"
             ngbDropdownToggle
           >
-            My Account
+            {{ userName }}
           </button>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
             <button routerLink="/home/user/address-list" ngbDropdownItem>

@@ -8,9 +8,13 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
+  userName: string = '';
+
   constructor(private router: Router, private toastr: ToastrService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.userName = sessionStorage['name'];
+  }
 
   onLogin() {
     this.router.navigate(['/auth/login']);
