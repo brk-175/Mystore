@@ -6,6 +6,7 @@
     <table class="table table-striped table-hover table-bordered">
       <thead>
         <th>No.</th>
+        <th>Thumbnail</th>
         <th>Product Title</th>
         <th>Category</th>
         <th>Brand</th>
@@ -16,6 +17,14 @@
       <tbody>
         <tr *ngFor="let product of order_details; let i = index">
           <td>{{ i + 1 }}</td>
+          <td>
+            <img
+              class="product-image"
+              src="http://localhost:7100/product/image/{{
+                product['imageFile']
+              }}"
+            />
+          </td>
           <td>{{ product["title"] }}</td>
           <td>{{ product["category"] }}</td>
           <td>{{ product["brand"] }}</td>

@@ -13,7 +13,7 @@ export class AddressAddComponent {
   line2 = '';
   city = '';
   state = '';
-  pinCode = '';
+  pinCode: number = NaN;
   title = '';
 
   constructor(
@@ -28,7 +28,7 @@ export class AddressAddComponent {
     else if (this.line2.length == 0) this.toastr.warning('Please add line2 !');
     else if (this.city.length == 0) this.toastr.warning('Please add city !');
     else if (this.state.length == 0) this.toastr.warning('Please add state !');
-    else if (this.pinCode.length == 0)
+    else if (this.pinCode.toString().length == 0)
       this.toastr.warning('Please add pin-code !');
     else {
       this.service

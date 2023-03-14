@@ -10,8 +10,8 @@ import { OrderService } from '../order.service';
   styleUrls: ['./order-history.component.css'],
 })
 export class OrderHistoryComponent {
-  orders = [];
-  order_details = [];
+  orders: any = [];
+  order_details: any = [];
 
   constructor(
     private service: OrderService,

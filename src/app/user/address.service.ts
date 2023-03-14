@@ -8,7 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 export class AddressService {
   httpOptions = {
     headers: new HttpHeaders({
-      token: sessionStorage['token'], 
+      token: sessionStorage['token'],
     }),
   };
 
@@ -26,7 +26,7 @@ export class AddressService {
     line2: string,
     city: string,
     state: string,
-    pinCode: string
+    pinCode: number
   ) {
     const body = {
       title: title,
